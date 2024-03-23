@@ -1,0 +1,6 @@
+--- /usr/share/zeek/share/zeek/base/protocols/mysql/__load__.zeek	2023-10-10 20:39:46.000000000 +0800
++++ mysql__load__.zeek	2023-10-11 15:40:01.425380014 +0800
+@@ -1 +1,2 @@
+ @load ./main
++@load-sigs ./dpd.sig
+

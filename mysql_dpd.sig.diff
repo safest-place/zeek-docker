@@ -1,0 +1,48 @@
+--- /usr/share/zeek/share/zeek/base/protocols/mysql/dpd.sig	1970-01-01 08:00:00.000000000 +0800
++++ mysql_dpd.sig	2023-10-11 15:40:01.425380014 +0800
+@@ -0,0 +1,44 @@
++# MySQL Protocol Signature
++
++signature mysql_client8 {
++    ip-proto == tcp
++    payload /\x01\x0f\xa6\x3e.*caching_sha2_password/
++    tcp-state originator
++    enable "mysql"
++}
++
++signature mysql_client5 {
++    ip-proto == tcp
++    payload /\x01\x0f\xa6\x3e.*mysql_native_password/
++    tcp-state originator
++    enable "mysql"
++}
++
++signature mariadb_client {
++    ip-proto == tcp
++    payload /\x01\x8a\xa7\xbe\x01.*mysql_native_password/
++    tcp-state originator
++    enable "mysql"
++}
++
++signature mysql_server8 {
++    ip-proto == tcp
++    payload /\x4a\x00\x00.*caching_sha2_password/
++    tcp-state responder
++    enable "mysql"
++}
++
++signature mysql_server5 {
++    ip-proto == tcp
++    payload /\x4a\x00\x00.*mysql_native_password/
++    tcp-state responder
++    enable "mysql"
++}
++
++signature mariadb_server11 {
++    ip-proto == tcp
++    payload /\x69\x00\x00.*mysql_native_password/
++    tcp-state responder
++    enable "mysql"
++}
++
+
